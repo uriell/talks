@@ -1,0 +1,12 @@
+{
+  "name": "talks",
+  "version": "1.0.0",
+  "description": "a repository to build and store my talks in",
+  "repository": "git@github.com:uriell/talks.git",
+  "author": "Uriell <me+github@uriell.dev>",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "lerna": "^4.0.0"
+  }
+}
