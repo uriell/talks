@@ -15,7 +15,11 @@ const Presentation = () => (
   >
     {slides.map((slide, index) => (
       <div key={index} className={customAwsSldCssModule.slide}>
-        <Slide {...slide} />
+        {Array.isArray(slide) ? (
+          <Slide.Group slides={slide} />
+        ) : (
+          <Slide {...slide} />
+        )}
       </div>
     ))}
   </AwesomeSlider>
