@@ -6,7 +6,5 @@
   "author": "Uriell <me+github@uriell.dev>",
   "license": "MIT",
   "private": true,
-  "devDependencies": {
-    "lerna": "^4.0.0"
-  }
+  "workspaces": ["talks/*"]
 }
