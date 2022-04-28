@@ -2,7 +2,7 @@ import React from "react";
 import styled, { css, StyledComponent } from "styled-components";
 import { COLORS } from "@ditointernet/uai-foundation";
 
-import { prop, transparentize } from "../utils";
+import { prop, transparentize } from "../utils/functional";
 
 type palettes = "dark" | "navy" | "green" | "white";
 
