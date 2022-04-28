@@ -2,7 +2,8 @@ import AwesomeSlider from "react-awesome-slider";
 
 import customAwsSldCssModule from "./react-awesome-slider.module.scss";
 import Slide from "./components/Slide";
-import slides from "./slides";
+
+import slides from "./slides/sections";
 
 const Presentation = () => (
   <AwesomeSlider
