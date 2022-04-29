@@ -1,8 +1,15 @@
 import styled from "styled-components";
 
-import { flex, FlexProps, padding, PaddingProps } from "../utils/styling";
+import {
+  flex,
+  FlexProps as FlexUtilProps,
+  padding,
+  PaddingProps,
+} from "../utils/styling";
 
-const Flex = styled.div<FlexProps & PaddingProps>`
+export type FlexProps = FlexUtilProps & PaddingProps;
+
+const Flex = styled.div<FlexProps>`
   ${flex}
   ${padding}
 `;

@@ -3,6 +3,7 @@ import styled, { css, StyledComponent } from "styled-components";
 import { COLORS } from "@ditointernet/uai-foundation";
 
 import { prop, transparentize } from "../utils/functional";
+import Flex, { FlexProps } from "./Flex";
 
 type palettes = "dark" | "navy" | "green" | "white";
 
@@ -92,29 +93,29 @@ export type SlideProps = {
   backgroundUrl?: string;
   backgroundColor?: string;
   textColor?: string;
-  flexFlow?: string;
   zIndex?: number;
   shadow?: boolean;
   padding?: string;
   palette?: palettes;
   arrow?: Directions;
   arrowDistance?: string;
+  className?: string;
   children?: React.ReactNode;
-};
+} & FlexProps;
 
 type SlideComponent = StyledComponent<"div", any, SlideProps, never> & {
   Group: React.FC<SlideGroupProps>;
 };
 
-const Slide = styled.div<SlideProps>`
-  display: flex;
-  flex-flow: column;
-  flex: 1;
+const Slide = styled(Flex).attrs((props) => ({
+  flow: "column",
+  flex: "1",
+  ...props,
+}))<SlideProps>`
   position: relative;
 
-  flex-flow: ${prop<SlideProps>("flexFlow", "row nowrap")};
-  z-index: ${prop<SlideProps>("zIndex", "auto")};
-  padding: ${prop<SlideProps>("padding", "5vmax")};
+  z-index: ${prop("zIndex", "auto")};
+  padding: ${prop("padding", "5vmax")};
 
   color: ${getSlideTextColor};
   background-color: ${getSlideBackgroundColor};

@@ -1,7 +1,8 @@
 import styled, { css } from "styled-components";
 import { COLORS } from "@ditointernet/uai-foundation";
+import { margin, MarginProps } from "../utils/styling";
 
-type TypographyProps = {
+export type TypographyProps = {
   color?: string;
   size?: "large" | "normal" | "small";
   weight?: "black" | "bold" | "medium" | "regular";
@@ -13,7 +14,7 @@ type TypographyProps = {
   suffix?: string;
   suffixColor?: string;
   suffixBlinking?: boolean;
-};
+} & MarginProps;
 
 function getTextProps(props: TypographyProps) {
   const suffix = props.suffix || "";
@@ -66,8 +67,8 @@ const FONT_WEIGHTS: Record<"black" | "bold" | "medium" | "regular", number> = {
 export const BaseText = styled.span.attrs((props) => ({
   decoration: "none",
   ...props,
-}))`
-  margin: 0;
+}))<TypographyProps>`
+  ${margin}
   ${getTextProps}
 `;
 
