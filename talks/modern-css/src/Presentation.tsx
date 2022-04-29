@@ -17,13 +17,13 @@ const Presentation = () => {
   const isInvalidSlide = currentSlide < 1 || currentSlide > SLIDES_COUNT;
 
   useEffect(() => {
-    if (isInvalidSlide) return navigate("/1");
+    if (isInvalidSlide) return navigate("/1/");
 
     function onKeyDown(event: KeyboardEvent) {
       if (event.key === "ArrowRight") {
-        navigate(`/${currentSlide + 1}`);
+        navigate(`/${currentSlide + 1}/`);
       } else if (event.key === "ArrowLeft") {
-        navigate(`/${currentSlide - 1}`);
+        navigate(`/${currentSlide - 1}/`);
       }
     }
 
@@ -33,7 +33,7 @@ const Presentation = () => {
   }, [currentSlide, isInvalidSlide, navigate]);
 
   if (isInvalidSlide) {
-    navigate("/1");
+    navigate("/1/");
     return null;
   }
 
@@ -50,9 +50,9 @@ const Presentation = () => {
       {slides.map((slide, index) => (
         <div key={index} className={customAwsSldCssModule.slide}>
           {Array.isArray(slide) ? (
-            <Slide.Group slides={slide} />
+            <Slide.Group slides={slide} index={index} />
           ) : (
-            <Slide {...slide} />
+            <Slide {...slide} index={index} />
           )}
         </div>
       ))}

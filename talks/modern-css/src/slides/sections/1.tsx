@@ -1,7 +1,3 @@
-import styled from "styled-components";
-import { CodeSurfer } from "@code-surfer/standalone";
-import { dracula as draculaTheme } from "@code-surfer/themes";
-
 import Slide, { SlideProps } from "../../components/Slide";
 import { H1, H3, Overline, Text } from "../../components/Typography";
 import Flex from "../../components/Flex";
@@ -13,10 +9,11 @@ import { Item, Unordered } from "../../components/Lists";
 import meSrc from "../../images/me.png";
 import peterCssSrc from "../../images/peterCss.gif";
 import olderBrowserCssSrc from "../../images/olderBrowserCss.png";
+import CodeSurfer from "../../components/CodeSurfer";
 
 const slide_1: SlideProps = {
   palette: "dark",
-  children: (
+  children: () => (
     <Flex flow="column" justify="center" flex="1">
       <Overline>as diversas formas do</Overline>
       <H1 suffix="." weight="bold">
@@ -34,7 +31,7 @@ const slide_1: SlideProps = {
 const slide_2: SlideProps = {
   backgroundUrl: peterCssSrc,
   padding: "0",
-  children: (
+  children: () => (
     <Flex
       flex="1"
       justify="center"
@@ -62,35 +59,26 @@ const steps = [
 </MULTICOL>`,
     lang: "html",
   },
+  {
+    code: `<MULTICOL COLS="3" GUTTER="25">
+  <P>
+    <FONT SIZE="4" COLOR="RED">
+      Texto quebrado em colunas
+    </FONT>
+  </P>
+</MULTICOL>`,
+    focus: "4",
+    lang: "html",
+  },
 ];
 
-(draculaTheme as any).colors.background = "#223154";
-(draculaTheme as any).styles.CodeSurfer.code.background = "#223154";
-(draculaTheme as any).styles.CodeSurfer.pre.background = "#223154";
-(draculaTheme as any).styles.CodeSurfer.title.background = "#223154";
-
-const CodeSurferStyleWrapper = styled.div`
-  max-height: calc(100vh - 10vmax - 78px);
-
-  code {
-    margin: 0 !important;
-
-    & > div:first-child,
-    & > div:last-child {
-      display: none;
-    }
-  }
-`;
-
 const slide_3: SlideProps = {
-  children: (
+  children: (index) => (
     <>
       <Text margin="0 0 1rem 0" suffix=":">
         Antes do CSS
       </Text>
-      <CodeSurferStyleWrapper>
-        <CodeSurfer progress={0} steps={steps} theme={draculaTheme} />
-      </CodeSurferStyleWrapper>
+      <CodeSurfer index={index} steps={steps} />
     </>
   ),
 };
@@ -98,7 +86,7 @@ const slide_3: SlideProps = {
 const slide_4: SlideProps = {
   backgroundUrl: olderBrowserCssSrc,
   padding: "0",
-  children: (
+  children: () => (
     <Flex
       flex="1"
       justify="center"
@@ -117,7 +105,7 @@ const slide_4: SlideProps = {
 
 const slide_5: SlideProps = {
   justify: "center",
-  children: (
+  children: () => (
     <H1 suffix=".">
       Só que, alguns dos <br /> problemas da época, <br />
       <strong>acontecem até hoje</strong>
@@ -128,12 +116,13 @@ const slide_5: SlideProps = {
 const slide_6: SlideProps = {
   palette: "white",
   flow: "row",
-  children: (
+  children: (index) => (
     <Slide.Group
+      index={index}
       slides={[
         {
           palette: "white",
-          children: (
+          children: () => (
             <H3 weight="bold" suffix=":">
               3 Problemas persistentes do CSS
             </H3>
@@ -141,7 +130,7 @@ const slide_6: SlideProps = {
         },
         {
           palette: "white",
-          children: (
+          children: () => (
             <Unordered>
               <Item>Namespace global</Item>
               <Item>Isolamento</Item>

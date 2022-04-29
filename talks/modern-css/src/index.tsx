@@ -7,8 +7,8 @@ import "./index.scss";
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <BrowserRouter>
     <Routes>
-      <Route path="/:slide" element={<Presentation />} />
-      <Route path="*" element={<Navigate to="/1" />} />
+      <Route path="/:slide/*" element={<Presentation />} />
+      <Route path="*" element={<Navigate to="/1/" />} />
     </Routes>
   </BrowserRouter>
 );

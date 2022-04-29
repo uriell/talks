@@ -1,5 +1,5 @@
 import React from "react";
-import styled, { css, StyledComponent } from "styled-components";
+import styled, { css } from "styled-components";
 import { COLORS } from "@ditointernet/uai-foundation";
 
 import { prop, transparentize } from "../utils/functional";
@@ -14,19 +14,19 @@ const BACKGROUND_COLORS: Record<palettes, string> = {
   white: COLORS.WHITE,
 };
 
-function getSlideBackgroundColor({ palette, backgroundColor }: SlideProps) {
+function getSlideBackgroundColor({ palette, backgroundColor }: BaseSlideProps) {
   return palette
     ? BACKGROUND_COLORS[palette]
     : backgroundColor || COLORS.NAVY_DARK;
 }
 
-function getSlideTextColor({ palette, textColor }: SlideProps) {
+function getSlideTextColor({ palette, textColor }: BaseSlideProps) {
   if (palette === "white") return COLORS.NAVY_DARK;
   if (palette) return COLORS.WHITE;
   return textColor || COLORS.WHITE;
 }
 
-function slideBackgroundImage({ backgroundUrl }: SlideProps) {
+function slideBackgroundImage({ backgroundUrl }: BaseSlideProps) {
   if (!backgroundUrl) return "";
 
   return css`
@@ -37,7 +37,7 @@ function slideBackgroundImage({ backgroundUrl }: SlideProps) {
   `;
 }
 
-function slideBoxShadow({ shadow, ...props }: SlideProps) {
+function slideBoxShadow({ shadow, ...props }: BaseSlideProps) {
   if (!shadow) return "";
 
   const slideBackgroundColor = getSlideBackgroundColor(props);
@@ -53,7 +53,7 @@ function slideBoxShadow({ shadow, ...props }: SlideProps) {
 
 type Directions = "right" | "bottom" | "top" | "left";
 
-function slideArrow({ arrow, arrowDistance, ...props }: SlideProps) {
+function slideArrow({ arrow, arrowDistance, ...props }: BaseSlideProps) {
   if (!arrow) return "";
 
   const arrowOppositeDirectionMap: Record<Directions, string> = {
@@ -89,7 +89,7 @@ function slideArrow({ arrow, arrowDistance, ...props }: SlideProps) {
   `;
 }
 
-export type SlideProps = {
+type BaseSlideProps = {
   backgroundUrl?: string;
   backgroundColor?: string;
   textColor?: string;
@@ -100,18 +100,13 @@ export type SlideProps = {
   arrow?: Directions;
   arrowDistance?: string;
   className?: string;
-  children?: React.ReactNode;
 } & FlexProps;
 
-type SlideComponent = StyledComponent<"div", any, SlideProps, never> & {
-  Group: React.FC<SlideGroupProps>;
-};
-
-const Slide = styled(Flex).attrs((props) => ({
+const BaseSlide = styled(Flex).attrs((props) => ({
   flow: "column",
   flex: "1",
   ...props,
-}))<SlideProps>`
+}))<BaseSlideProps>`
   position: relative;
 
   z-index: ${prop("zIndex", "auto")};
@@ -125,12 +120,31 @@ const Slide = styled(Flex).attrs((props) => ({
   ${slideBackgroundImage}
 `;
 
-type SlideGroupProps = { slides: SlideProps[] };
+export type SlideProps = BaseSlideProps & {
+  children?: (index: number) => React.ReactNode;
+};
 
-const SlideGroup: React.FC<SlideGroupProps> = ({ slides }) => (
+const Slide: React.FC<SlideProps & { index: number }> = ({
+  index,
+  children,
+  ...props
+}) => <BaseSlide {...props}>{children ? children(index) : null}</BaseSlide>;
+
+type SlideComponent = React.FC<SlideProps & { index: number }> & {
+  Group: React.FC<SlideGroupProps>;
+};
+
+type SlideGroupProps = { slides: SlideProps[]; index: number };
+
+const SlideGroup: React.FC<SlideGroupProps> = ({ slides, index }) => (
   <>
     {slides.map((subSlide, subIndex, subArr) => (
-      <Slide key={subIndex} {...subSlide} zIndex={subArr.length - subIndex} />
+      <Slide
+        key={subIndex}
+        {...subSlide}
+        index={index}
+        zIndex={subArr.length - subIndex}
+      />
     ))}
   </>
 );

@@ -3,7 +3,7 @@ import { H1, H2, H3, Overline, Text } from "../../components/Typography";
 
 const slide_1: SlideProps = {
   palette: "navy",
-  children: (
+  children: () => (
     <>
       <div>
         <H1>Olá Mundo</H1>
