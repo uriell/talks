@@ -8853,6 +8853,11 @@ uri-js@^4.2.2:
   dependencies:
     punycode "^2.1.0"
 
+use-spring@0.2.4:
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/use-spring/-/use-spring-0.2.4.tgz#f93afad502351cf62544e843d8f95e414ee39326"
+  integrity sha512-TjpIGS+RRs5AKMjA5y/TwtfSTG4EgMCHflJhL3nc2NuvJoEHCmR2fa37slZt2NkLsZ5E+W9faDeLGLU/n9wfHg==
+
 util-deprecate@^1.0.1, util-deprecate@^1.0.2, util-deprecate@~1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"

@@ -51,6 +51,24 @@ const slide_2: SlideProps = {
 const steps = [
   {
     code: `<MULTICOL COLS="3" GUTTER="25">
+</MULTICOL>`,
+    lang: "html",
+  },
+  {
+    code: `<MULTICOL COLS="3" GUTTER="25">
+</MULTICOL>`,
+    focus: "1[11:30]",
+    lang: "html",
+  },
+  {
+    code: `<MULTICOL COLS="3" GUTTER="25">
+  <P>
+  </P>
+</MULTICOL>`,
+    lang: "html",
+  },
+  {
+    code: `<MULTICOL COLS="3" GUTTER="25">
   <P>
     <FONT SIZE="4" COLOR="RED">
       Texto quebrado em colunas
@@ -67,7 +85,7 @@ const steps = [
     </FONT>
   </P>
 </MULTICOL>`,
-    focus: "4",
+    focus: "3[11:31]",
     lang: "html",
   },
 ];
@@ -116,12 +134,16 @@ const slide_5: SlideProps = {
 const slide_6: SlideProps = {
   palette: "white",
   flow: "row",
+  padding: "0",
   children: (index) => (
     <Slide.Group
       index={index}
       slides={[
         {
-          palette: "white",
+          padding: "10vmax",
+          palette: "navy",
+          arrow: "right",
+          shadow: true,
           children: () => (
             <H3 weight="bold" suffix=":">
               3 Problemas persistentes do CSS
@@ -129,6 +151,7 @@ const slide_6: SlideProps = {
           ),
         },
         {
+          padding: "10vmax",
           palette: "white",
           children: () => (
             <Unordered>

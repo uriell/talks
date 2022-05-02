@@ -10,6 +10,7 @@ import {
   useParams,
 } from "react-router-dom";
 import { useEffect } from "react";
+import { useSpring } from "use-spring";
 
 (draculaTheme as any).colors.background = "#223154";
 (draculaTheme as any).styles.CodeSurfer.code.background = "#223154";
@@ -55,13 +56,9 @@ const InnerCodeSurfer: React.FC<CodeSurferProps> = ({ index, steps }) => {
     function onKeyDown(event: KeyboardEvent) {
       if (event.key === "ArrowRight" && !isLastStep) {
         event.stopImmediatePropagation();
-        event.stopPropagation();
-        event.preventDefault();
         navigate(`/${index + 1}/step/${currentSubSlide + 1}`);
       } else if (event.key === "ArrowLeft" && !isFirstStep) {
         event.stopImmediatePropagation();
-        event.stopPropagation();
-        event.preventDefault();
         navigate(`/${index + 1}/step/${currentSubSlide - 1}`);
       }
     }
@@ -71,10 +68,17 @@ const InnerCodeSurfer: React.FC<CodeSurferProps> = ({ index, steps }) => {
     return () => document.removeEventListener("keydown", onKeyDown);
   }, [currentSubSlide, index, steps.length, navigate]);
 
+  const [easedProgress] = useSpring(currentSubSlide - 1, {
+    decimals: 3,
+    stiffness: 75,
+    damping: 30,
+    mass: 4,
+  });
+
   return (
     <CodeSurferStyleWrapper>
       <BaseCodeSurfer
-        progress={currentSubSlide - 1}
+        progress={easedProgress}
         steps={steps}
         theme={draculaTheme}
       />
