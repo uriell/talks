@@ -4,9 +4,17 @@ import { Text, TypographyProps } from "./Typography";
 import { COLORS } from "@ditointernet/uai-foundation";
 import { prop } from "../utils/functional";
 
-export const ItemDesc = (props: TypographyProps) => (
-  <Text {...props} size="small" weight="medium" color={COLORS.GRAY_7} />
-);
+export const ItemDesc = styled(Text).attrs({
+  as: "p",
+  size: "small",
+  color: COLORS.GRAY_5,
+})<TypographyProps>`
+  i {
+    font-weight: 700;
+    font-style: normal;
+    color: ${COLORS.GREEN_MAIN};
+  }
+`;
 
 type ListItemProps = TypographyProps;
 
@@ -71,3 +79,12 @@ export const Ordered = styled.ol<ListProps>`
     }
   }
 `;
+
+const Lists = {
+  Unordered,
+  Ordered,
+  ItemDesc,
+  Item,
+};
+
+export default Lists;

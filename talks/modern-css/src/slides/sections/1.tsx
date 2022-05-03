@@ -4,7 +4,7 @@ import Flex from "../../components/Flex";
 import Hr from "../../components/Hr";
 import Avatar from "../../components/Avatar";
 import Image from "../../components/Image";
-import { Item, Unordered } from "../../components/Lists";
+import Lists from "../../components/Lists";
 
 import meSrc from "../../images/me.png";
 import peterCssSrc from "../../images/peterCss.gif";
@@ -144,7 +144,7 @@ const slide_6: SlideProps = {
       index={index}
       slides={[
         {
-          padding: "10vmax",
+          padding: "7.5vmax",
           palette: "navy",
           arrow: "right",
           justify: "center",
@@ -160,11 +160,11 @@ const slide_6: SlideProps = {
           palette: "white",
           justify: "center",
           children: () => (
-            <Unordered>
-              <Item>Namespace global</Item>
-              <Item>Isolamento</Item>
-              <Item>Arquivos muito grandes</Item>
-            </Unordered>
+            <Lists.Unordered>
+              <Lists.Item>Namespace global</Lists.Item>
+              <Lists.Item>Isolamento</Lists.Item>
+              <Lists.Item>Arquivos muito grandes</Lists.Item>
+            </Lists.Unordered>
           ),
         },
       ]}
@@ -172,7 +172,7 @@ const slide_6: SlideProps = {
   ),
 };
 
-const section_slides: Array<SlideProps | SlideProps[]> = [
+const section_slides: Array<SlideProps> = [
   slide_1,
   slide_2,
   slide_3,
