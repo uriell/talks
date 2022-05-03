@@ -10,6 +10,6 @@ const slide_2: SlideProps = {
   children: () => "Привет, мир",
 };
 
-const section_slides: Array<SlideProps> = [slide_1, slide_2];
+const section_slides: SlideProps[] = [slide_1, slide_2];
 
 export default section_slides;

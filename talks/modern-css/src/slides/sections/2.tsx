@@ -166,7 +166,7 @@ const slide_6: SlideProps = {
   ),
 };
 
-const section_slides: Array<SlideProps> = [
+const section_slides: SlideProps[] = [
   slide_1,
   slide_2,
   slide_3,
