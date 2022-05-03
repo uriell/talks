@@ -1,5 +1,7 @@
 import styled, { css } from "styled-components";
 import { COLORS } from "@ditointernet/uai-foundation";
+import { Link as RouterLink } from "react-router-dom";
+
 import { margin, MarginProps } from "../utils/styling";
 
 export type TypographyProps = {
@@ -28,6 +30,12 @@ function getTextProps(props: TypographyProps & { as?: "h1" | "h2" | "h3" }) {
     ${props.color ? `color: ${props.color};` : ""}
     ${props.align ? `text-align: ${props.align};` : ""}
     ${props.transform ? `text-transform: ${props.transform};` : ""}
+
+    i {
+      font-weight: 700;
+      font-style: normal;
+      color: ${COLORS.GREEN_MAIN};
+    }
 
     &:after {
       content: "${suffix}";
@@ -98,3 +106,10 @@ export const Overline = styled(Text).attrs<TypographyProps>((props) => ({
   size: "overline",
   transform: "uppercase",
 }))``;
+
+export const Link = styled.a`
+  color: ${COLORS.GREEN_MAIN};
+  text-decoration: underline;
+  font-size: ${FONT_SIZES.small};
+  line-height: ${FONT_SIZES.small};
+`;

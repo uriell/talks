@@ -46,7 +46,7 @@ function slideBoxShadow({ shadow, ...props }: BaseSlideProps) {
   return css`
     &,
     &:after {
-      box-shadow: 0 0 30px 8px ${slideShadowColor};
+      box-shadow: 0 0 1.5rem 0.5rem ${slideShadowColor};
     }
   `;
 }

@@ -8,13 +8,7 @@ export const ItemDesc = styled(Text).attrs({
   as: "p",
   size: "small",
   color: COLORS.GRAY_5,
-})<TypographyProps>`
-  i {
-    font-weight: 700;
-    font-style: normal;
-    color: ${COLORS.GREEN_MAIN};
-  }
-`;
+})<TypographyProps>``;
 
 type ListItemProps = TypographyProps;
 
