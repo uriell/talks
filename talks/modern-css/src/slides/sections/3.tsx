@@ -18,6 +18,8 @@ const slide_1: SlideProps = {
         <Text size="normal">Olá Mundo</Text>
         <br />
         <Text size="small">Olá Mundo</Text>
+        <br />
+        <Text>Olá Mundo</Text>
       </div>
     </>
   ),

@@ -5,17 +5,16 @@ import { COLORS } from "@ditointernet/uai-foundation";
 import { prop } from "../utils/functional";
 
 export const ItemDesc = (props: TypographyProps) => (
-  <Text {...props} size="small" weight="regular" color={COLORS.GRAY_7} />
+  <Text {...props} size="small" weight="medium" color={COLORS.GRAY_7} />
 );
 
 type ListItemProps = TypographyProps;
 
-export const Item = styled(Text).attrs((props) => ({
-  size: "small",
-  weight: "medium",
+export const Item = styled(Text).attrs({
+  size: "normal",
+  weight: "semibold",
   as: "li",
-  ...props,
-}))<ListItemProps>`
+})<ListItemProps>`
   margin-bottom: 2rem;
 
   &:last-of-type {
@@ -25,7 +24,7 @@ export const Item = styled(Text).attrs((props) => ({
   &:before,
   &:after {
     color: ${COLORS.GREEN_MAIN};
-    font-weight: 700;
+    font-weight: 800;
   }
 
   &:before {

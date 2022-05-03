@@ -19,6 +19,7 @@ import { useSpring } from "use-spring";
 
 const CodeSurferStyleWrapper = styled.div`
   max-height: calc(100vh - 10vmax - 78px);
+  font-size: 1.75rem;
 
   code {
     margin: 0 !important;

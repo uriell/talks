@@ -1,5 +1,5 @@
 import Slide, { SlideProps } from "../../components/Slide";
-import { H1, H3, Overline, Text } from "../../components/Typography";
+import { H1, H2, H3, Overline, Text } from "../../components/Typography";
 import Flex from "../../components/Flex";
 import Hr from "../../components/Hr";
 import Avatar from "../../components/Avatar";
@@ -124,10 +124,14 @@ const slide_4: SlideProps = {
 const slide_5: SlideProps = {
   justify: "center",
   children: () => (
-    <H1 suffix=".">
-      Só que, alguns dos <br /> problemas da época, <br />
-      <strong>acontecem até hoje</strong>
-    </H1>
+    <>
+      <H1 weight="regular">
+        Só que, alguns dos <br /> problemas da época,
+      </H1>
+      <H1 weight="bold" suffix=".">
+        acontecem até hoje
+      </H1>
+    </>
   ),
 };
 
@@ -143,16 +147,18 @@ const slide_6: SlideProps = {
           padding: "10vmax",
           palette: "navy",
           arrow: "right",
+          justify: "center",
           shadow: true,
           children: () => (
-            <H3 weight="bold" suffix=":">
+            <H2 weight="bold" suffix=":">
               3 Problemas persistentes do CSS
-            </H3>
+            </H2>
           ),
         },
         {
           padding: "10vmax",
           palette: "white",
+          justify: "center",
           children: () => (
             <Unordered>
               <Item>Namespace global</Item>
