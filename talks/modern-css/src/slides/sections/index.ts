@@ -6,7 +6,7 @@ import section_3 from "./3";
 import section_4 from "./4";
 import section_5 from "./5";
 
-const slides: Array<SlideProps | SlideProps[]> = [
+const slides: Array<SlideProps> = [
   ...section_1,
   ...section_2,
   ...section_3,

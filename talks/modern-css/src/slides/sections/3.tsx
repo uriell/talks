@@ -25,6 +25,6 @@ const slide_1: SlideProps = {
   ),
 };
 
-const section_slides: Array<SlideProps | SlideProps[]> = [slide_1];
+const section_slides: Array<SlideProps> = [slide_1];
 
 export default section_slides;
