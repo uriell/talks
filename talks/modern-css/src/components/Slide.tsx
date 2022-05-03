@@ -121,14 +121,20 @@ const BaseSlide = styled(Flex).attrs((props) => ({
 `;
 
 export type SlideProps = BaseSlideProps & {
-  children?: (index: number) => React.ReactNode;
+  children?: (index: number, backgroundColor?: string) => React.ReactNode;
 };
 
 const Slide: React.FC<SlideProps & { index: number }> = ({
   index,
   children,
   ...props
-}) => <BaseSlide {...props}>{children ? children(index) : null}</BaseSlide>;
+}) => (
+  <BaseSlide {...props}>
+    {children
+      ? children(index, BACKGROUND_COLORS[props.palette ?? "dark"])
+      : null}
+  </BaseSlide>
+);
 
 type SlideComponent = React.FC<SlideProps & { index: number }> & {
   Group: React.FC<SlideGroupProps>;

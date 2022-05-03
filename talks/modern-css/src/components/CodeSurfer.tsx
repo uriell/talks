@@ -12,14 +12,13 @@ import {
 import { useEffect } from "react";
 import { useSpring } from "use-spring";
 
-(draculaTheme as any).colors.background = "#223154";
-(draculaTheme as any).styles.CodeSurfer.code.background = "#223154";
-(draculaTheme as any).styles.CodeSurfer.pre.background = "#223154";
-(draculaTheme as any).styles.CodeSurfer.title.background = "#223154";
+type CodeSurferWrapperProps = {
+  fontSize?: string;
+};
 
-const CodeSurferStyleWrapper = styled.div`
+const CodeSurferStyleWrapper = styled.div<CodeSurferWrapperProps>`
   max-height: calc(100vh - 10vmax - 78px);
-  font-size: 1.75rem;
+  font-size: ${(props) => props.fontSize ?? "1.75rem"};
 
   code {
     margin: 0 !important;
@@ -43,12 +42,26 @@ type Step = {
 type CodeSurferProps = {
   index: number;
   steps: Step[];
-};
+  backgroundColor?: string;
+} & CodeSurferWrapperProps;
 
-const InnerCodeSurfer: React.FC<CodeSurferProps> = ({ index, steps }) => {
+const InnerCodeSurfer: React.FC<CodeSurferProps> = ({
+  index,
+  steps,
+  backgroundColor,
+  ...props
+}) => {
   const params = useParams();
   const navigate = useNavigate();
   const currentSubSlide = parseInt(params.subSlide ?? "0", 10);
+
+  (draculaTheme as any).colors.background = backgroundColor || "#223154";
+  (draculaTheme as any).styles.CodeSurfer.code.background =
+    backgroundColor || "#223154";
+  (draculaTheme as any).styles.CodeSurfer.pre.background =
+    backgroundColor || "#223154";
+  (draculaTheme as any).styles.CodeSurfer.title.background =
+    backgroundColor || "#223154";
 
   useEffect(() => {
     const isFirstStep = currentSubSlide === 1;
@@ -77,7 +90,7 @@ const InnerCodeSurfer: React.FC<CodeSurferProps> = ({ index, steps }) => {
   });
 
   return (
-    <CodeSurferStyleWrapper>
+    <CodeSurferStyleWrapper {...props}>
       <BaseCodeSurfer
         progress={easedProgress}
         steps={steps}
@@ -87,7 +100,7 @@ const InnerCodeSurfer: React.FC<CodeSurferProps> = ({ index, steps }) => {
   );
 };
 
-const CodeSurfer: React.FC<CodeSurferProps> = ({ index, steps }) => {
+const CodeSurfer: React.FC<CodeSurferProps> = ({ index, ...props }) => {
   const match = useMatch(`/${index + 1}/*`);
 
   if (!match) return null;
@@ -96,7 +109,7 @@ const CodeSurfer: React.FC<CodeSurferProps> = ({ index, steps }) => {
     <Routes>
       <Route
         path="/step/:subSlide"
-        element={<InnerCodeSurfer index={index} steps={steps} />}
+        element={<InnerCodeSurfer index={index} {...props} />}
       />
       <Route path="/*" element={<Navigate to={`/${index + 1}/step/1`} />} />
     </Routes>

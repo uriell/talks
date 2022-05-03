@@ -156,6 +156,7 @@ const slide_5: SlideProps = {
 };
 
 const slide_6: SlideProps = {
+  palette: "navy",
   justify: "center",
   children: () => (
     <>
