@@ -63,13 +63,6 @@ const steps = [
   {
     code: `<MULTICOL COLS="3" GUTTER="25">
   <P>
-  </P>
-</MULTICOL>`,
-    lang: "html",
-  },
-  {
-    code: `<MULTICOL COLS="3" GUTTER="25">
-  <P>
     <FONT SIZE="4" COLOR="RED">
       Texto quebrado em colunas
     </FONT>

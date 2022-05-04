@@ -1,6 +1,5 @@
 import styled, { css } from "styled-components";
 import { COLORS } from "@ditointernet/uai-foundation";
-import { Link as RouterLink } from "react-router-dom";
 
 import { margin, MarginProps } from "../utils/styling";
 

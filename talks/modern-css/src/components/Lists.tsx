@@ -12,11 +12,12 @@ export const ItemDesc = styled(Text).attrs({
 
 type ListItemProps = TypographyProps;
 
-export const Item = styled(Text).attrs({
+export const Item = styled(Text).attrs((props) => ({
   size: "normal",
   weight: "semibold",
   as: "li",
-})<ListItemProps>`
+  ...props,
+}))<ListItemProps>`
   margin-bottom: 2rem;
 
   &:last-of-type {
@@ -39,25 +40,19 @@ export const Item = styled(Text).attrs({
   }
 `;
 
-type ListProps = {
-  textSize?: string;
-  bulletSize?: string;
-  bulletColor?: string;
-};
-
-export const Unordered = styled.ul<ListProps>`
+export const Unordered = styled.ul`
   list-style: none;
   margin: 0;
 
   ${Item} {
     &::before {
       margin-left: -1rem;
-      color: ${(props) => props.bulletColor || COLORS.GREEN_MAIN};
+      color: ${COLORS.GREEN_MAIN};
     }
   }
 `;
 
-export const Ordered = styled.ol<ListProps>`
+export const Ordered = styled.ol`
   list-style: none;
   margin: 0;
 
@@ -68,8 +63,8 @@ export const Ordered = styled.ol<ListProps>`
 
     &::before {
       margin-left: -1.5rem;
+      color: ${COLORS.GREEN_MAIN};
       content: counter(dito-ol-counter) ". ";
-      color: ${(props) => props.bulletColor || COLORS.GREEN_MAIN};
     }
   }
 `;
