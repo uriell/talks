@@ -1,6 +1,9 @@
+import Image from "../../components/Image";
 import Lists from "../../components/Lists";
 import Slide, { SlideProps } from "../../components/Slide";
 import { H1, H2, Link } from "../../components/Typography";
+
+import meThinkingSrc from "../../images/me-thinking.png";
 
 const slide_1: SlideProps = {
   justify: "center",
@@ -160,8 +163,18 @@ const slide_6: SlideProps = {
   justify: "center",
   children: () => (
     <>
-      <H1 weight="regular">Mas nós acabamos</H1>
-      <H1 weight="bold">duplicando código 🤔</H1>
+      <Image
+        src={meThinkingSrc}
+        alt="a memoji of myself thinking"
+        width="420px"
+        style={{ boxShadow: "none", position: "absolute", right: "10rem" }}
+      />
+      <div>
+        <H1 weight="regular">Mas nós acabamos</H1>
+        <H1 weight="bold" suffix="...">
+          duplicando código
+        </H1>
+      </div>
     </>
   ),
 };
