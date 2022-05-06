@@ -6,10 +6,11 @@ import Avatar from "../../components/Avatar";
 import Image from "../../components/Image";
 import Lists from "../../components/Lists";
 
-import meSrc from "../../images/me.png";
+import mePhotoSrc from "../../images/me.png";
 import peterCssSrc from "../../images/peterCss.gif";
 import olderBrowserCssSrc from "../../images/olderBrowserCss.png";
 import CodeSurfer from "../../components/CodeSurfer";
+import RandomWave from "../../animations/RandomWave";
 
 const slide_1: SlideProps = {
   palette: "dark",
@@ -21,9 +22,10 @@ const slide_1: SlideProps = {
       </H1>
       <Hr width="6rem" />
       <Flex padding="1rem 0 0 0">
-        <Avatar src={meSrc} margin="0 0.5rem 0 0" />
+        <Avatar src={mePhotoSrc} margin="0 0.5rem 0 0" />
         <H3 weight="bold">Uriell Viana</H3>
       </Flex>
+      <RandomWave />
     </Flex>
   ),
 };

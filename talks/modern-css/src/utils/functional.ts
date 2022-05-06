@@ -1,7 +1,7 @@
 export const prop =
-  <T>(key: keyof T, fallback: any) =>
+  <T>(key: keyof T, fallback: any = undefined) =>
   (props: T) =>
-    props[key] || fallback;
+    props[key] ?? fallback;
 
 export const isSafari = () =>
   navigator.userAgent.includes("Safari") &&
