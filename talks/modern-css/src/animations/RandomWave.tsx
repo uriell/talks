@@ -3,44 +3,31 @@ import styled, { keyframes } from "styled-components";
 import meWavingSrc from "../images/me-waving.png";
 import Image from "../components/Image";
 import { prop } from "../utils/functional";
+import { useEffect, useState } from "react";
 
 const archAndShadow = keyframes`
-  0% {
+  // neat trick to make the infinite animation sleep for 5s (80% of 6.25s)
+  0%, 20%, 100% {
     transform: translateX(
         calc(-1 * var(--scaleX) * (var(--translateX) + 70%))
       )
-      translateY(var(--translateY)) rotate(calc(var(--scaleX) * 25deg))
-      scaleX(var(--scaleX)) scale(var(--scale));
+      translateY(var(--translateY))
+      rotate(calc(var(--scaleX) * 25deg))
+      scaleX(var(--scaleX))
+      scale(var(--scale));
   }
 
-  40% {
+  5%, 15% {
     transform: translateX(
         calc(
           -1 * var(--scaleX) * (var(--translateX) +
                 var(--scalingOffsetTranslateX))
         )
       )
-      translateY(var(--translateY)) rotate(calc(var(--scaleX) * 50deg))
-      scaleX(var(--scaleX)) scale(var(--scale));
-  }
-
-  60% {
-    transform: translateX(
-        calc(
-          -1 * var(--scaleX) * (var(--translateX) +
-                var(--scalingOffsetTranslateX))
-        )
-      )
-      translateY(var(--translateY)) rotate(calc(var(--scaleX) * 50deg))
-      scaleX(var(--scaleX)) scale(var(--scale));
-  }
-
-  100% {
-    transform: translateX(
-        calc(-1 * var(--scaleX) * (var(--translateX) + 70%))
-      )
-      translateY(var(--translateY)) rotate(calc(var(--scaleX) * 25deg))
-      scaleX(var(--scaleX)) scale(var(--scale));
+      translateY(var(--translateY))
+      rotate(calc(var(--scaleX) * 50deg))
+      scaleX(var(--scaleX))
+      scale(var(--scale));
   }
 `;
 
@@ -59,7 +46,8 @@ const StyledWavingMemoji = styled(Image)<RandomWaveProps>`
   --scalingOffsetTranslateX: ${prop("scalingOffsetTranslateX")}%;
 
   animation-name: ${archAndShadow};
-  animation-duration: 1.25s;
+  animation-duration: 6250ms;
+  animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
   animation-fill-mode: both;
   backface-visibility: hidden;
@@ -77,6 +65,31 @@ const MIN_MAX_SCALE = [0.2, 1];
 const SCALE_TRANSLATION_MULTIPLIER = 3.1;
 
 const RandomWave = () => {
+  const [position, setPosition] = useState(getRandomPosition());
+
+  useEffect(() => {
+    const timeout = setInterval(() => setPosition(getRandomPosition()), 6250);
+
+    return () => clearInterval(timeout);
+  }, []);
+
+  return (
+    <StyledWavingMemoji
+      src={meWavingSrc}
+      width="420px"
+      alt="a memoji of myself waving"
+      scale={position.scale}
+      scaleX={position.isLeftSide ? 1 : -1}
+      offsetTranslateX={position.isLeftSide ? 30 : 0}
+      scalingOffsetTranslateX={
+        position.scaleDecrement * SCALE_TRANSLATION_MULTIPLIER
+      }
+      translateY={position.translateY}
+    />
+  );
+};
+
+function getRandomPosition() {
   const scale = floatRange(...MIN_MAX_SCALE);
   const scaleDecrement = (1 - scale) * 10;
   const isLeftSide = Math.random() > 0.5;
@@ -86,22 +99,8 @@ const RandomWave = () => {
     75 + scaleDecrement * 4.6875
   );
 
-  // exchange this for a smarter system
-  // setTimeout(() => window.location.reload(), 1500);
-
-  return (
-    <StyledWavingMemoji
-      src={meWavingSrc}
-      width="420px"
-      alt="a memoji of myself waving"
-      scale={scale}
-      scaleX={isLeftSide ? 1 : -1}
-      offsetTranslateX={isLeftSide ? 30 : 0}
-      scalingOffsetTranslateX={scaleDecrement * SCALE_TRANSLATION_MULTIPLIER}
-      translateY={translateY}
-    />
-  );
-};
+  return { scale, isLeftSide, scaleDecrement, translateY };
+}
 
 const floatRange = (min: number = 0, max: number = 1): number =>
   min < 0
