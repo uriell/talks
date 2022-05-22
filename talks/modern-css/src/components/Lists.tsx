@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 import { Text, TypographyProps } from "./Typography";
 import { COLORS } from "@ditointernet/uai-foundation";
@@ -10,7 +10,17 @@ export const ItemDesc = styled(Text).attrs({
   color: COLORS.GRAY_5,
 })<TypographyProps>``;
 
-type ListItemProps = TypographyProps;
+const slideFromRight = keyframes`
+  0% {
+    transform: translateX(150%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+`;
+
+type ListItemProps = TypographyProps & { empty?: boolean };
 
 export const Item = styled(Text).attrs((props) => ({
   size: "normal",
@@ -18,11 +28,7 @@ export const Item = styled(Text).attrs((props) => ({
   as: "li",
   ...props,
 }))<ListItemProps>`
-  margin-bottom: 2rem;
-
-  &:last-of-type {
-    margin-bottom: 0;
-  }
+  animation: ${slideFromRight} 200ms ease-in-out;
 
   &:before,
   &:after {
@@ -31,7 +37,7 @@ export const Item = styled(Text).attrs((props) => ({
   }
 
   &:before {
-    content: "\\2022";
+    content: "${(props) => (props.empty ? "" : "\\2022")}";
     position: absolute;
   }
 
@@ -50,6 +56,10 @@ export const Unordered = styled.ul`
       color: ${COLORS.GREEN_MAIN};
     }
   }
+
+  > * ~ * {
+    margin-top: 2rem;
+  }
 `;
 
 export const Ordered = styled.ol`
@@ -66,6 +76,10 @@ export const Ordered = styled.ol`
       color: ${COLORS.GREEN_MAIN};
       content: counter(dito-ol-counter) ". ";
     }
+  }
+
+  > * ~ * {
+    margin-top: 2rem;
   }
 `;
 

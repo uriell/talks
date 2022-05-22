@@ -2,6 +2,7 @@ import CodeSurfer from "../../components/CodeSurfer";
 import Slide, { SlideProps } from "../../components/Slide";
 import { H1, H2, Text } from "../../components/Typography";
 import Lists from "../../components/Lists";
+import SlidingBullets from "../../animations/SlidingBullets";
 
 const slide_1: SlideProps = {
   justify: "center",
@@ -276,7 +277,11 @@ const slide_6: SlideProps = {
           palette: "white",
           justify: "center",
           children: () => (
-            <Lists.Unordered>
+            <SlidingBullets
+              index={index}
+              component={Lists.Unordered}
+              placeholderHeight={3.25}
+            >
               <Lists.Item>
                 PurgeCSS
                 <Lists.ItemDesc suffix=".">
@@ -298,7 +303,7 @@ const slide_6: SlideProps = {
                   Um mundo de transformações e plugins pra estender seu CSS
                 </Lists.ItemDesc>
               </Lists.Item>
-            </Lists.Unordered>
+            </SlidingBullets>
           ),
         },
       ]}

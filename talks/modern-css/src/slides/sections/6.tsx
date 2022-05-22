@@ -10,6 +10,7 @@ import { COLORS } from "@ditointernet/uai-foundation";
 import { ReactComponent as GithubLogo } from "../../images/github-logo.svg";
 import { ReactComponent as SelfUrl } from "../../images/self-url.svg";
 import Lists from "../../components/Lists";
+import SlidingBullets from "../../animations/SlidingBullets";
 
 const slide_1: SlideProps = {
   palette: "white",
@@ -39,7 +40,11 @@ const slide_1: SlideProps = {
           palette: "white",
           justify: "center",
           children: () => (
-            <Lists.Unordered>
+            <SlidingBullets
+              index={index}
+              component={Lists.Unordered}
+              placeholderHeight={3.75}
+            >
               <Lists.Item suffix=";">
                 Atacamos 3 dos maiores problemas em qualquer aplicação
               </Lists.Item>
@@ -50,7 +55,7 @@ const slide_1: SlideProps = {
                 Descobrimos alguns prós, contras e pontos de atenção na hora de
                 aplicar
               </Lists.Item>
-            </Lists.Unordered>
+            </SlidingBullets>
           ),
         },
       ]}

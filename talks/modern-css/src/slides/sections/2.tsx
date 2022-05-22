@@ -1,3 +1,4 @@
+import SlidingBullets from "../../animations/SlidingBullets";
 import Image from "../../components/Image";
 import Lists from "../../components/Lists";
 import Slide, { SlideProps } from "../../components/Slide";
@@ -42,7 +43,11 @@ const slide_2: SlideProps = {
           palette: "white",
           justify: "center",
           children: () => (
-            <Lists.Unordered>
+            <SlidingBullets
+              index={index}
+              component={Lists.Unordered}
+              placeholderHeight={3.25}
+            >
               <Lists.Item>
                 SMACSS
                 <Lists.ItemDesc>
@@ -70,7 +75,7 @@ const slide_2: SlideProps = {
                   Estrutura simples e <i>robusta</i>
                 </Lists.ItemDesc>
               </Lists.Item>
-            </Lists.Unordered>
+            </SlidingBullets>
           ),
         },
       ]}
@@ -112,7 +117,11 @@ const slide_4: SlideProps = {
           palette: "white",
           justify: "center",
           children: () => (
-            <Lists.Unordered>
+            <SlidingBullets
+              index={index}
+              component={Lists.Unordered}
+              placeholderHeight={2.25}
+            >
               <Lists.Item>
                 S(A|C)SS
                 <Lists.ItemDesc>
@@ -137,7 +146,7 @@ const slide_4: SlideProps = {
                   </Link>
                 </Lists.ItemDesc>
               </Lists.Item>
-            </Lists.Unordered>
+            </SlidingBullets>
           ),
         },
       ]}

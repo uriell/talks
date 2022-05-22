@@ -13,6 +13,8 @@ import CodeSurfer from "../../components/CodeSurfer";
 import RandomWave from "../../animations/RandomWave";
 import ImageSwap from "../../animations/ImageSwap";
 import Lists from "../../components/Lists";
+import SubSlideRouter from "../../components/SubSlideRouter";
+import SlidingBullets from "../../animations/SlidingBullets";
 
 const slide_1: SlideProps = {
   palette: "dark",
@@ -159,12 +161,12 @@ const slide_6: SlideProps = {
           padding: "10vmax",
           palette: "white",
           justify: "center",
-          children: () => (
-            <Lists.Unordered>
+          children: (index) => (
+            <SlidingBullets index={index} component={Lists.Unordered}>
               <Lists.Item>Namespace global</Lists.Item>
               <Lists.Item>Isolamento</Lists.Item>
               <Lists.Item>Arquivos muito grandes</Lists.Item>
-            </Lists.Unordered>
+            </SlidingBullets>
           ),
         },
       ]}
