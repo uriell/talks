@@ -4,13 +4,15 @@ import Flex from "../../components/Flex";
 import Hr from "../../components/Hr";
 import Avatar from "../../components/Avatar";
 import Image from "../../components/Image";
-import Lists from "../../components/Lists";
 
 import mePhotoSrc from "../../images/me.png";
 import peterCssSrc from "../../images/peterCss.gif";
 import olderBrowserCssSrc from "../../images/olderBrowserCss.png";
+import ie5ForMacSrc from "../../images/ie5-for-mac.png";
 import CodeSurfer from "../../components/CodeSurfer";
 import RandomWave from "../../animations/RandomWave";
+import ImageSwap from "../../animations/ImageSwap";
+import Lists from "../../components/Lists";
 
 const slide_1: SlideProps = {
   palette: "dark",
@@ -97,22 +99,25 @@ const slide_3: SlideProps = {
 };
 
 const slide_4: SlideProps = {
-  backgroundUrl: olderBrowserCssSrc,
   padding: "0",
-  children: () => (
-    <Flex
-      flex="1"
-      justify="center"
-      align="center"
-      className="has-blurred-background"
-    >
-      <Image
-        src={olderBrowserCssSrc}
-        width="640"
-        height="480"
-        alt="older browser styled before css was created"
-      />
-    </Flex>
+  children: (index) => (
+    <ImageSwap
+      index={index}
+      images={[
+        {
+          src: olderBrowserCssSrc,
+          alt: "apple website in 1997, where only basic css features were available",
+          width: 640,
+          height: 480,
+        },
+        {
+          src: ie5ForMacSrc,
+          alt: "internet explorer 5 featuring near complete css spec exhibiting google's search website",
+          width: 1020,
+          height: 595,
+        },
+      ]}
+    />
   ),
 };
 
