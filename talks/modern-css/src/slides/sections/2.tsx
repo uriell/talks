@@ -176,7 +176,12 @@ const slide_6: SlideProps = {
         src={meThinkingSrc}
         alt="a memoji of myself thinking"
         width="420px"
-        style={{ boxShadow: "none", position: "absolute", right: "10rem" }}
+        style={{
+          boxShadow: "none",
+          position: "absolute",
+          right: "10rem",
+          filter: "drop-shadow(0.25rem 0.25rem 0.25rem rgba(0, 0, 0, 0.5))",
+        }}
       />
       <div>
         <H1 weight="regular">Mas nós acabamos</H1>

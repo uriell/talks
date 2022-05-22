@@ -1,12 +1,6 @@
-import {
-  Navigate,
-  Route,
-  Routes,
-  useMatch,
-  useNavigate,
-  useParams,
-} from "react-router-dom";
+import { Route, Routes, useMatch, useParams } from "react-router-dom";
 import { useEffect } from "react";
+import { Navigate, useNavigate } from "../hooks/useNavigate";
 
 type InnerSubSlideProps = {
   index: number;

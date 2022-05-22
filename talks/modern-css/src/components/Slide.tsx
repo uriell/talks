@@ -110,7 +110,7 @@ const BaseSlide = styled(Flex).attrs((props) => ({
   position: relative;
 
   z-index: ${prop("zIndex", "auto")};
-  padding: ${prop("padding", "5vmax")};
+  padding: ${prop("padding", "5vw")};
 
   color: ${getSlideTextColor};
   background-color: ${getSlideBackgroundColor};
