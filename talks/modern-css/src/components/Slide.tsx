@@ -32,8 +32,8 @@ function slideBackgroundImage({ backgroundUrl }: BaseSlideProps) {
   return css`
     background-size: cover;
     background-position: center;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-      url("${backgroundUrl}");
+    background-image: url("${backgroundUrl}");
+    transition: background-image 200ms ease-in-out;
   `;
 }
 
