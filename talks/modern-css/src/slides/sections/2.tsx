@@ -27,7 +27,7 @@ const slide_2: SlideProps = {
       index={index}
       slides={[
         {
-          padding: "7.5vmax",
+          padding: "4.5rem",
           palette: "navy",
           arrow: "right",
           justify: "center",
@@ -39,7 +39,7 @@ const slide_2: SlideProps = {
           ),
         },
         {
-          padding: "10vmax",
+          padding: "6rem",
           palette: "white",
           justify: "center",
           children: () => (
@@ -101,7 +101,7 @@ const slide_4: SlideProps = {
       index={index}
       slides={[
         {
-          padding: "7.5vmax",
+          padding: "4.5rem",
           palette: "navy",
           arrow: "right",
           justify: "center",
@@ -113,7 +113,7 @@ const slide_4: SlideProps = {
           ),
         },
         {
-          padding: "10vmax",
+          padding: "6rem",
           palette: "white",
           justify: "center",
           children: () => (
@@ -175,11 +175,11 @@ const slide_6: SlideProps = {
       <Image
         src={meThinkingSrc}
         alt="a memoji of myself thinking"
-        width="420px"
         style={{
           boxShadow: "none",
           position: "absolute",
           right: "10rem",
+          width: "13.125rem",
           filter: "drop-shadow(0.25rem 0.25rem 0.25rem rgba(0, 0, 0, 0.5))",
         }}
       />

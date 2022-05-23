@@ -6,7 +6,7 @@ const Avatar = styled.img<MarginProps>`
   border-radius: 100%;
   width: 2rem;
   height: 2rem;
-  box-shadow: 0 0 30px 8px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 1rem 0.25rem rgba(0, 0, 0, 0.25);
   ${margin}
 `;
 

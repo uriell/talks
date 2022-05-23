@@ -65,8 +65,7 @@ const slide_2: SlideProps = {
       <Image
         src={cssInJsSrc}
         margin="1rem 0 0 0"
-        width="1200"
-        height="600"
+        style={{ width: "37.5rem", height: "18.75rem" }}
         alt="many css in js library logos layed out as a meme"
       />
     </Flex>

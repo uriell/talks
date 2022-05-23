@@ -13,11 +13,11 @@ import CodeSurfer from "../../components/CodeSurfer";
 import RandomWave from "../../animations/RandomWave";
 import ImageSwap from "../../animations/ImageSwap";
 import Lists from "../../components/Lists";
-import SubSlideRouter from "../../components/SubSlideRouter";
 import SlidingBullets from "../../animations/SlidingBullets";
 
 const slide_1: SlideProps = {
   palette: "dark",
+  notes: "abc",
   children: () => (
     <Flex flow="column" justify="center" flex="1">
       <Overline>as diversas formas do</Overline>
@@ -46,8 +46,7 @@ const slide_2: SlideProps = {
     >
       <Image
         src={peterCssSrc}
-        width="640"
-        height="480"
+        style={{ width: "20rem", height: "15rem" }}
         alt="peter griffin playing with a blindshield as if it were css"
       />
     </Flex>
@@ -109,14 +108,14 @@ const slide_4: SlideProps = {
         {
           src: olderBrowserCssSrc,
           alt: "apple website in 1997, where only basic css features were available",
-          width: 640,
-          height: 480,
+          width: "20rem",
+          height: "15rem",
         },
         {
           src: ie5ForMacSrc,
           alt: "internet explorer 5 featuring near complete css spec exhibiting google's search website",
-          width: 1020,
-          height: 595,
+          width: "31rem",
+          height: "18rem",
         },
       ]}
     />
@@ -146,7 +145,7 @@ const slide_6: SlideProps = {
       index={index}
       slides={[
         {
-          padding: "7.5vmax",
+          padding: "4.5rem",
           palette: "navy",
           arrow: "right",
           justify: "center",
@@ -158,7 +157,7 @@ const slide_6: SlideProps = {
           ),
         },
         {
-          padding: "10vmax",
+          padding: "6rem",
           palette: "white",
           justify: "center",
           children: (index) => (

@@ -6,8 +6,8 @@ import SubSlideRouter from "../components/SubSlideRouter";
 type ImageItem = {
   src: string;
   alt: string;
-  width: number;
-  height: number;
+  width: string;
+  height: string;
 };
 
 type ImageSwapProps = {
@@ -34,7 +34,11 @@ const ImageSwap: React.FC<ImageSwapProps> = ({ index, images }) => (
               align="center"
               className="has-blurred-background"
             >
-              <Image {...image} />
+              <Image
+                src={image.src}
+                alt={image.alt}
+                style={{ width: image.width, height: image.height }}
+              />
             </Flex>
           )}
         </Slide>

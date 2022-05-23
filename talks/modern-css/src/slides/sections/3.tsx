@@ -261,7 +261,7 @@ const slide_6: SlideProps = {
       index={index}
       slides={[
         {
-          padding: "7.5vmax",
+          padding: "4.5rem",
           palette: "navy",
           arrow: "right",
           justify: "center",
@@ -273,7 +273,7 @@ const slide_6: SlideProps = {
           ),
         },
         {
-          padding: "10vmax",
+          padding: "6rem",
           palette: "white",
           justify: "center",
           children: () => (

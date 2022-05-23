@@ -70,17 +70,17 @@ function slideArrow({ arrow, arrowDistance, ...props }: BaseSlideProps) {
   const slideArrowPosition = css({
     [arrowOppositeAxis]: `${arrowDistance || 50}%`,
     [arrowOppositeDirection]: "100%",
-    [`margin-${arrowOppositeDirection}`]: "-1.75vmin",
+    [`margin-${arrowOppositeDirection}`]: "-1rem",
   });
 
   return css`
     &:after {
       border: solid rgba(0, 0, 0, 0);
       content: " ";
-      width: 2.5vmin;
-      height: 2.5vmin;
+      width: 1.5rem;
+      height: 1.5rem;
       position: absolute;
-      border-radius: 3px;
+      border-radius: 0.125rem;
       pointer-events: none;
       transform: rotate(45deg);
       background-color: ${slideBackgroundColor};
@@ -100,6 +100,7 @@ type BaseSlideProps = {
   arrow?: Directions;
   arrowDistance?: string;
   className?: string;
+  notes?: string;
 } & FlexProps;
 
 const BaseSlide = styled(Flex).attrs((props) => ({
@@ -110,7 +111,7 @@ const BaseSlide = styled(Flex).attrs((props) => ({
   position: relative;
 
   z-index: ${prop("zIndex", "auto")};
-  padding: ${prop("padding", "5vw")};
+  padding: ${prop("padding", "3rem")};
 
   color: ${getSlideTextColor};
   background-color: ${getSlideBackgroundColor};

@@ -34,9 +34,10 @@ const archAndShadow = keyframes`
 const StyledWavingMemoji = styled(Image)<RandomWaveProps>`
   box-shadow: none;
   position: absolute;
-  bottom: calc(50% - ((420px - 96px) / 2));
-  left: calc(50% - ((420px - 128px) / 2));
-  filter: drop-shadow(0.25rem 0.5rem 4px rgba(0, 0, 0, 0.5));
+  width: 13.125rem;
+  bottom: calc(50% - ((13.125rem - 3rem) / 2));
+  left: calc(50% - ((13.125rem - 4rem) / 2));
+  filter: drop-shadow(0.25rem 0.5rem 0.125rem rgba(0, 0, 0, 0.5));
 
   --baseTranslateX: 182%;
   --translateX: calc(var(--baseTranslateX) + ${prop("offsetTranslateX", 0)}%);
@@ -76,7 +77,7 @@ const RandomWave = () => {
   return (
     <StyledWavingMemoji
       src={meWavingSrc}
-      width="420px"
+      width="13.125rem"
       alt="a memoji of myself waving"
       scale={position.scale}
       scaleX={position.isLeftSide ? 1 : -1}

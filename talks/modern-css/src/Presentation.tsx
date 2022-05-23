@@ -58,17 +58,27 @@ const Presentation = () => {
     </AwesomeSlider>
   );
 
-  return searchParams.get("presenterMode") ? (
-    <PresenterModeWrapper>{content}</PresenterModeWrapper>
+  return isPresenterMode ? (
+    <PresenterModeWrapper>
+      <PresenterModeGlobalStyle />
+      {content}
+    </PresenterModeWrapper>
   ) : (
     content
   );
 };
 
+const PresenterModeGlobalStyle = createGlobalStyle`
+  html, body {
+    font-size: 16px;
+  }
+`;
+
 const PresenterModeWrapper = styled.div`
-  transform: scale(0.5);
-  width: 100%;
-  height: 100%;
+  /* transform: scale(0.5); */
+  width: 50vw;
+  height: 50vh;
+  box-sizing: border-box;
   border: 0.5rem solid orange;
   box-shadow: 0.25rem 0.25rem 0.25rem rgba(0, 0, 0, 0.5);
 `;
