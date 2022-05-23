@@ -20,7 +20,7 @@ const SlidingBullets = ({
   placeholderHeight,
   children,
 }: SlidingBulletsProps) => (
-  <SubSlideRouter index={index} stepsCount={children.length + 1}>
+  <SubSlideRouter index={index} subSlideCount={children.length + 1}>
     {(currentSubSlide) => (
       <ListComponent>
         {React.Children.map(children, (child, index) => {

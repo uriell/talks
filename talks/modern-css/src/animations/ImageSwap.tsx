@@ -16,7 +16,7 @@ type ImageSwapProps = {
 };
 
 const ImageSwap: React.FC<ImageSwapProps> = ({ index, images }) => (
-  <SubSlideRouter index={index} stepsCount={images.length}>
+  <SubSlideRouter index={index} subSlideCount={images.length}>
     {(currentSubSlide) => {
       const image = images[currentSubSlide - 1];
 

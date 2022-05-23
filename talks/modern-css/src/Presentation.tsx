@@ -1,44 +1,13 @@
-import { useEffect } from "react";
+import styled, { createGlobalStyle } from "styled-components";
 import AwesomeSlider from "react-awesome-slider";
-import { useParams, useSearchParams } from "react-router-dom";
 
 import customAwsSldCssModule from "./react-awesome-slider.module.scss";
-import Slide from "./components/Slide";
+import { useCurrentSlides, usePresenterMode } from "./components/LocationSync";
+import Slide, { SlideProps } from "./components/Slide";
 
-import slides from "./slides/sections";
-import { useNavigate } from "./hooks/useNavigate";
-import styled from "styled-components";
-
-const SLIDES_COUNT = slides.length;
-
-const Presentation = () => {
-  const params = useParams();
-  const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
-
-  const currentSlide = parseInt(params.slide ?? "0", 10);
-  const isInvalidSlide = currentSlide < 1 || currentSlide > SLIDES_COUNT;
-
-  useEffect(() => {
-    if (isInvalidSlide) return navigate("/1");
-
-    function onKeyDown(event: KeyboardEvent) {
-      if (event.key === "ArrowRight") {
-        navigate(`/${currentSlide + 1}`);
-      } else if (event.key === "ArrowLeft") {
-        navigate(`/${currentSlide - 1}`);
-      }
-    }
-
-    document.addEventListener("keydown", onKeyDown);
-
-    return () => document.removeEventListener("keydown", onKeyDown);
-  }, [currentSlide, isInvalidSlide, navigate]);
-
-  if (isInvalidSlide) {
-    navigate("/1");
-    return null;
-  }
+const Presentation: React.FC<{ slides: SlideProps[] }> = ({ slides }) => {
+  const isPresenterMode = usePresenterMode();
+  const { currentSlide } = useCurrentSlides();
 
   const content = (
     <AwesomeSlider

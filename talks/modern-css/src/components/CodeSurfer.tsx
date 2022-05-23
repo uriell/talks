@@ -72,7 +72,7 @@ const CodeSurfer: React.FC<CodeSurferProps> = ({
   overrideTheme(draculaTheme as any, backgroundColor);
 
   return (
-    <SubSlideRouter index={index} stepsCount={props.steps.length}>
+    <SubSlideRouter index={index} subSlideCount={props.steps.length}>
       {(currentSubSlide) => (
         <CodeSurferStyleWrapper fontSize={fontSize}>
           <InnerCodeSurfer currentSubSlide={currentSubSlide} {...props} />
