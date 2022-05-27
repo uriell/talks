@@ -1,11 +1,7 @@
 import { useEffect } from "react";
 import { Navigate, Route, Routes, useMatch } from "react-router-dom";
 
-import {
-  useCurrentSlides,
-  useSlideNavigation,
-  useSlideUrlParams,
-} from "./LocationSync";
+import { useSlideNavigation, useSlideUrlParams } from "./LocationSync";
 import { PRESENTATION_ROUTE } from "../constants";
 
 type SubSlideRouterProps = {
@@ -18,7 +14,7 @@ const InnerSubSlide: React.FC<SubSlideRouterProps> = ({
   children,
 }) => {
   const { forward, backward } = useSlideNavigation();
-  const { currentSubSlide } = useCurrentSlides();
+  const { currentSubSlide } = useSlideUrlParams();
 
   useEffect(() => {
     const isFirstStep = currentSubSlide === 1;
