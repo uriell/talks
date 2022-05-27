@@ -119,12 +119,10 @@ const LocationSync: React.FC<LocationSyncProps> = ({ children }) => {
   const getNextSlideState = useCallback(
     () =>
       [
-        Math.min(
-          isFinalSubSlide
-            ? slideState.currentSlide + 1
-            : slideState.currentSlide,
-          slideState.slideCount
-        ),
+        // Math.min(
+        isFinalSubSlide ? slideState.currentSlide + 1 : slideState.currentSlide,
+        // slideState.slideCount
+        // ),
         Math.min(
           !isFinalSubSlide ? slideState.currentSubSlide + 1 : 0,
           slideState.subSlideCount
@@ -135,12 +133,13 @@ const LocationSync: React.FC<LocationSyncProps> = ({ children }) => {
       isFinalSubSlide,
       slideState.currentSlide,
       slideState.currentSubSlide,
-      slideState.slideCount,
+      // slideState.slideCount,
       slideState.subSlideCount,
     ]
   );
 
   // forward navigation helper
+  // TODO: can't advance on last slide
   const forward = useCallback(
     () => navigate(...getNextSlideState()),
     [navigate, getNextSlideState]
@@ -169,24 +168,23 @@ const LocationSync: React.FC<LocationSyncProps> = ({ children }) => {
     isPresenterMode,
     bothSubSlides,
   ]);
-  // navigation reset helper
-  // TODO: remove reset if it's only used once
-  const reset = useCallback(
-    (currentSlide?: number, subSlideCount?: number) =>
-      navigate(currentSlide ?? 1, currentSlide ? 1 : 0, subSlideCount),
-    [navigate]
-  );
 
   // resetting invalid current slide or subSlide
   useEffect(() => {
+    const isCurrentSlideNegative = !slideState.currentSlide;
+    const isCurrentSlidePastSlideCount =
+      slideState.currentSlide > slideState.slideCount;
+    const hasSubSlides = !!slideState.subSlideCount;
+    const isCurrentSubSlidePastSubSlideCount =
+      slideState.currentSubSlide > slideState.subSlideCount;
+
     if (
-      !slideState.currentSlide ||
-      slideState.currentSlide > slideState.slideCount ||
-      (slideState.subSlideCount &&
-        slideState.currentSubSlide > slideState.subSlideCount)
+      isCurrentSlideNegative ||
+      (!isPresenterMode && isCurrentSlidePastSlideCount) ||
+      (hasSubSlides && isCurrentSubSlidePastSubSlideCount)
     )
-      reset();
-  }, [slideState, reset]);
+      navigate(1);
+  }, [slideState, navigate, isPresenterMode]);
 
   // <- && -> keybindings
   useEffect(() => {
@@ -283,17 +281,6 @@ export function useSlideUrlParams() {
   const suffix = params["*"] || "";
 
   return { slideCount, subSlideCount, currentSlide, currentSubSlide, suffix };
-}
-
-export function useCurrentSlides() {
-  const params = useParams();
-  const currentSlide = parseInt(params.slide ?? "0", 10);
-  const currentSubSlide = parseInt(params.subSlide ?? "0", 10);
-
-  return {
-    currentSlide,
-    currentSubSlide,
-  };
 }
 
 export default LocationSync;
