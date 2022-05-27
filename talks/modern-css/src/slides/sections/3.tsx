@@ -1,12 +1,16 @@
+import styled from "styled-components";
+
 import CodeSurfer from "../../components/CodeSurfer";
 import Slide, { SlideProps } from "../../components/Slide";
 import { H1, H2, Text } from "../../components/Typography";
 import Lists from "../../components/Lists";
 import SlidingBullets from "../../animations/SlidingBullets";
+import MacWindow from "../../components/MacWindow";
 
 const slide_1: SlideProps = {
   justify: "center",
-  children: () => <H1 suffix="...">Por exemplo</H1>,
+  notes: "Um exemplo de porque não é tão simples...",
+  children: () => <H1 suffix="...">Vamos ver um exemplo</H1>,
 };
 
 const slide_2_steps = [
@@ -43,18 +47,18 @@ const slide_2_steps = [
     code: `<table class="Table">
   <thead class="TableHeader">
     <tr class="TableRow">
-      <th class="TableCell TableCell--header">Product</th>
-      <th class="TableCell TableCell--header">Price</th>
+      <th class="TableCell TableCell--header">Produto</th>
+      <th class="TableCell TableCell--header">Preço</th>
     </tr>
   </thead>
   <tbody class="TableBody">
     <tr class="TableRow">
-      <td class="TableCell">Shirt</th>
-      <td class="TableCell">$10</th>
+      <td class="TableCell">Camisa</td>
+      <td class="TableCell">R$10</td>
     </tr>
     <tr class="TableRow">
-      <td class="TableCell">Pants</th>
-      <td class="TableCell">$20</th>
+      <td class="TableCell">Calça</td>
+      <td class="TableCell">R$20</td>
     </tr>
   </tbody>
 </table>`,
@@ -64,18 +68,18 @@ const slide_2_steps = [
     code: `<table class="Table">
   <thead class="TableHeader">
     <tr class="TableRow">
-      <th class="TableCell TableCell--header">Product</th>
-      <th class="TableCell TableCell--header">Price</th>
+      <th class="TableCell TableCell--header">Produto</th>
+      <th class="TableCell TableCell--header">Preço</th>
     </tr>
   </thead>
   <tbody class="TableBody">
     <tr class="TableRow">
-      <td class="TableCell">Shirt</th>
-      <td class="TableCell">$10</th>
+      <td class="TableCell">Camisa</td>
+      <td class="TableCell">R$10</td>
     </tr>
     <tr class="TableRow">
-      <td class="TableCell">Pants</th>
-      <td class="TableCell">$20</th>
+      <td class="TableCell">Calça</td>
+      <td class="TableCell">R$20</td>
     </tr>
   </tbody>
 </table>`,
@@ -85,8 +89,16 @@ const slide_2_steps = [
   },
 ];
 
+const StyledExampleSlide2 = styled(MacWindow)`
+  position: absolute;
+  right: 3rem;
+  top: 4.25rem;
+`;
+
 const slide_2: SlideProps = {
   palette: "navy",
+  notes:
+    "Temos o seguinte HTML estruturado com o BEM: \n\n 1. Vamos usar de exemplo uma tabela; \n 2. Precisamos de um cabeçalho e um corpo pra tabela; \n 3. Adicionamos as linhas; \n4. E por fim as células (de cabeçalho e corpo);\n\n Mas vamos reparar nas classes.",
   children: (index, backgroundColor) => (
     <>
       <Text margin="0 0 1rem 0" suffix=":">
@@ -98,6 +110,27 @@ const slide_2: SlideProps = {
         fontSize="0.9rem"
         backgroundColor={backgroundColor}
       />
+
+      <StyledExampleSlide2>
+        <table className="Table">
+          <thead className="TableHeader">
+            <tr className="TableRow">
+              <th className="TableCell TableCell--header">Produto</th>
+              <th className="TableCell TableCell--header">Preço</th>
+            </tr>
+          </thead>
+          <tbody className="TableBody">
+            <tr className="TableRow">
+              <td className="TableCell">Camisa</td>
+              <td className="TableCell">R$10</td>
+            </tr>
+            <tr className="TableRow">
+              <td className="TableCell">Calça</td>
+              <td className="TableCell">R$20</td>
+            </tr>
+          </tbody>
+        </table>
+      </StyledExampleSlide2>
     </>
   ),
 };
@@ -105,32 +138,32 @@ const slide_2: SlideProps = {
 const slide_3_steps = [
   {
     code: `.Table {
-  padding: 5px;
+  padding: 16px;
 }`,
     lang: "scss",
   },
   {
     code: `.Table {
-  padding: 5px;
+  padding: 16px;
 
   .TableCell {
-    min-width: 100px;
+    min-width: 240px;
   }
 }`,
     lang: "scss",
   },
   {
     code: `.Table {
-  padding: 5px;
+  padding: 16px;
 
   .TableCell {
-    min-width: 100px;
+    min-width: 240px;
   }
 
   .TableBody {
     .TableRow {
       .TableCell {
-        border-bottom: 1px solid silver;
+        border: 1px solid silver;
       }
     }
   }
@@ -139,14 +172,14 @@ const slide_3_steps = [
   },
   {
     code: `.Table {
-  padding: 5px;
+  padding: 16px;
 
   .TableCell {
-    min-width: 100px;
+    min-width: 240px;
   }
 
   .TableBody .TableRow .TableCell {
-    border-bottom: 1px solid silver;
+    border: 1px solid silver;
   }
 }`,
     focus: "1:11",
@@ -154,14 +187,14 @@ const slide_3_steps = [
   },
   {
     code: `.Table {
-  padding: 5px;
+  padding: 16px;
 
   .TableCell {
-    min-width: 100px;
+    min-width: 240px;
   }
 
   .TableBody .TableRow .TableCell {
-    border-bottom: 1px solid silver;
+    border: 1px solid silver;
   }
 }`,
     focus: "1[1:6]",
@@ -169,13 +202,53 @@ const slide_3_steps = [
   },
 ];
 
+const StyledExampleSlide3 = styled(MacWindow)`
+  position: absolute;
+  right: 3rem;
+  top: 4.25rem;
+
+  .Table {
+    padding: 0.5rem;
+
+    .TableCell {
+      min-width: 7.5rem;
+    }
+
+    .TableBody .TableRow .TableCell {
+      border: 1px solid black;
+    }
+  }
+`;
+
 const slide_3: SlideProps = {
+  notes:
+    "Como podemos usar o SASS pra estilizar essa tabela seguindo o BEM? \n\n Para conseguir estilizar somente as células do corpo da tabela, faríamos o seguinte CSS. Que poderia ser escrito de duas formas. \n\n Conseguem identificar o problema? Vou mostrar pra vocês.",
   children: (index) => (
     <>
       <Text margin="0 0 1rem 0" suffix=":">
         CSS feito na sintaxe do SASS
       </Text>
       <CodeSurfer index={index} steps={slide_3_steps} fontSize="1.2rem" />
+      <StyledExampleSlide3>
+        <table className="Table">
+          <thead className="TableHeader">
+            <tr className="TableRow">
+              <th className="TableCell TableCell--header">Produto</th>
+              <th className="TableCell TableCell--header">Preço</th>
+            </tr>
+          </thead>
+          <tbody className="TableBody">
+            <tr className="TableRow">
+              <td className="TableCell">Camisa</td>
+              <td className="TableCell">R$10</td>
+            </tr>
+            <tr className="TableRow">
+              <td className="TableCell">Calça</td>
+              <td className="TableCell">R$20</td>
+            </tr>
+          </tbody>
+        </table>
+      </StyledExampleSlide3>
     </>
   ),
 };
