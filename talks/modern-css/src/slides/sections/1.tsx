@@ -17,7 +17,8 @@ import SlidingBullets from "../../animations/SlidingBullets";
 
 const slide_1: SlideProps = {
   palette: "dark",
-  notes: "abc",
+  notes:
+    "CSS como um todo não é fácil de aprender. \n\n Pode ser facil obter conhecimentos mais reduzidos e desacoplados, mais a maioria dos desenvolvedores não tem conhecimento aprofundadoo ou avançado do CSS.",
   children: () => (
     <Flex flow="column" justify="center" flex="1">
       <Overline>as diversas formas do</Overline>
@@ -37,6 +38,8 @@ const slide_1: SlideProps = {
 const slide_2: SlideProps = {
   backgroundUrl: peterCssSrc,
   padding: "0",
+  notes:
+    'Frustração e falta de conhecimento ainda são problemas que se propagam com CSS até hoje, e são alguns motivos do porquê alguns criticam o CSS como "difícil".',
   children: () => (
     <Flex
       flex="1"
@@ -89,6 +92,8 @@ const steps = [
 ];
 
 const slide_3: SlideProps = {
+  notes:
+    "Relembrando o passado, antes até de eu ter nascido, CSS não existia também. \n\n Muitas propostas vieram antes do CSS ser aceito, e alguns navegadores ofereciam algum tipo de estilização por elementos e atributos do HTML, tipo MULTICOL, FONT e CENTER.",
   children: (index) => (
     <>
       <Text margin="0 0 1rem 0" suffix=":">
@@ -101,6 +106,8 @@ const slide_3: SlideProps = {
 
 const slide_4: SlideProps = {
   padding: "0",
+  notes:
+    "Só nos anos 2000, que o Internet Explorer 5 pro Mac foi ganhar a primeira implementação cobrindo quase 99% da especificação do CSS1. \n\n Ali começou um caminho de evolução que deveríamos ser gratos, se não fossem pelos problemas que surgiram juntos.",
   children: (index) => (
     <ImageSwap
       index={index}
@@ -124,12 +131,14 @@ const slide_4: SlideProps = {
 
 const slide_5: SlideProps = {
   justify: "center",
-  children: () => (
+  notes:
+    "Alguns problemas de longa data ainda estão sendo resolvidos de maneiras distintas hoje em dia, ou nos pegando de surpresa.",
+  children: (index) => (
     <>
       <H1 weight="regular">
         Só que, alguns dos <br /> problemas da época,
       </H1>
-      <H1 weight="bold" suffix=".">
+      <H1 weight="bold" suffix="_" suffixBlinking>
         acontecem até hoje
       </H1>
     </>
@@ -140,6 +149,8 @@ const slide_6: SlideProps = {
   palette: "white",
   flow: "row",
   padding: "0",
+  notes:
+    'Firefox e Safari demoram muito à implementar funcionalidades, ou oferecem apenas implementações parciais à especificação completa. \n\n Organização, refatoração, eliminação de código morto, escopo, especificidade. O CSS não oferece nativamente maneiras de resolver esses problemas, então acaba sendo o que "é popular no momento" na comunidades.\n\n Layouts e Responsividade na maior parte são bem resolvidos com Flexbox e CSS Grid, mas ainda podem haver mais maneiras de aprender e dominar essas funcionalidades pra efetivamente criar interface e mantê-las.',
   children: (index) => (
     <Slide.Group
       index={index}
@@ -162,9 +173,9 @@ const slide_6: SlideProps = {
           justify: "center",
           children: (index) => (
             <SlidingBullets index={index} component={Lists.Unordered}>
-              <Lists.Item>Namespace global</Lists.Item>
-              <Lists.Item>Isolamento</Lists.Item>
-              <Lists.Item>Arquivos muito grandes</Lists.Item>
+              <Lists.Item>Inconsistências de navegadores</Lists.Item>
+              <Lists.Item>Manutenabilidade</Lists.Item>
+              <Lists.Item>Responsividade e Layouts</Lists.Item>
             </SlidingBullets>
           ),
         },
