@@ -8,6 +8,8 @@ import meThinkingSrc from "../../images/me-thinking.png";
 
 const slide_1: SlideProps = {
   justify: "center",
+  notes:
+    "Eventualmente, a comunidades começou a endereçar os problemas mais práticos, como Escopo e Especificidade, também como organização e clareza do código.",
   children: () => (
     <>
       <H1 weight="regular">Mas como esses problemas</H1>
@@ -22,6 +24,8 @@ const slide_2: SlideProps = {
   palette: "white",
   flow: "row",
   padding: "0",
+  notes:
+    "Quase 10 anos atrás, vimos as primeiras metodologias de CSS, as mais populares sendo estas. \n\n Menção honrosa para ACSS, tendo sua primeira faísca na mesma época.",
   children: (index) => (
     <Slide.Group
       index={index}
@@ -85,6 +89,8 @@ const slide_2: SlideProps = {
 
 const slide_3: SlideProps = {
   justify: "center",
+  notes:
+    "Não levou muito tempo também para que desenvolvedores experimentassem com a transformação de código CSS.",
   children: () => (
     <H1 weight="regular">
       Veio a necessidade de fazer <br /> <i>MORE</i> with <i>LESS</i> 😎
@@ -96,6 +102,8 @@ const slide_4: SlideProps = {
   palette: "white",
   flow: "row",
   padding: "0",
+  notes:
+    "De muitas maneiras, os preprocessadores de CSS adicionam funcionalidades que sempre precisamos, além de aumentar bastante a produtividade e experiência de desenvolvimento.",
   children: (index) => (
     <Slide.Group
       index={index}

@@ -39,7 +39,7 @@ const slide_2: SlideProps = {
   backgroundUrl: peterCssSrc,
   padding: "0",
   notes:
-    'Frustração e falta de conhecimento ainda são problemas que se propagam com CSS até hoje, e são alguns motivos do porquê alguns criticam o CSS como "difícil".',
+    'Eu me relacionava bem com esse GIF porque via CSS como tentativa e erro. \n\n Frustração e falta de conhecimento ainda são problemas que se propagam com CSS até hoje, e são alguns motivos do porquê alguns criticam o CSS como "difícil".',
   children: () => (
     <Flex
       flex="1"
