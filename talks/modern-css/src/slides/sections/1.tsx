@@ -18,7 +18,7 @@ import SlidingBullets from "../../animations/SlidingBullets";
 const slide_1: SlideProps = {
   palette: "dark",
   notes:
-    "CSS como um todo não é fácil de aprender. \n\n Pode ser facil obter conhecimentos mais reduzidos e desacoplados, mais a maioria dos desenvolvedores não tem conhecimento aprofundadoo ou avançado do CSS.",
+    "CSS como um todo não é fácil de aprender. \n\n Pode ser facil obter conhecimentos mais reduzidos e desacoplados, mais a maioria dos desenvolvedores não tem conhecimento aprofundado ou avançado do CSS.",
   children: () => (
     <Flex flow="column" justify="center" flex="1">
       <Overline>as diversas formas do</Overline>

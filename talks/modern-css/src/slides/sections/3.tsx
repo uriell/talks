@@ -299,6 +299,8 @@ const slide_4_steps = [
 
 const slide_4: SlideProps = {
   palette: "navy",
+  notes:
+    "Esse é o resultado do SASS escrito anteriormente, transformado para CSS. \n\n Podemos ver que a classe Table se repete em múltiplas declarações, efetivamente deixando o arquivo final maior desnecessáriamente, já que com o BEM, temos seletores específicos o suficiente.",
   children: (index, backgroundColor) => (
     <>
       <Text margin="0 0 1rem 0" suffix=":">
@@ -329,6 +331,8 @@ const slide_6: SlideProps = {
   palette: "white",
   flow: "row",
   padding: "0",
+  notes:
+    "Processamentos adicionais nos arquivos gerados por préprocessadores podem ser feitos, com objetivos diversos, desde reduzir código desnecessário até aumentar a compatibilidade do mesmo entre navegadores. \n\n Essas são algumas das opções mais populares, menção especial pro PostCSS que vale muito a pena conhecer seu ecossistema de plugins.",
   children: (index) => (
     <Slide.Group
       index={index}
