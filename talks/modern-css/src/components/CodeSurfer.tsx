@@ -47,12 +47,16 @@ const CodeSurferStyleWrapper = styled.div<CodeSurferWrapperProps>`
   max-height: calc(100vh - 6rem - 2.4375rem);
   font-size: ${(props) => props.fontSize ?? "1.75rem"};
 
-  code {
-    margin: 0 !important;
+  .cs-container {
+    height: 100% !important;
 
-    & > div:first-child,
-    & > div:last-child {
-      display: none;
+    code {
+      margin: 0 !important;
+
+      & > div:first-child,
+      & > div:last-child {
+        display: none;
+      }
     }
   }
 `;
