@@ -6,6 +6,7 @@ import Slide, { SlideProps } from "../../components/Slide";
 import { H1, H2, H3, Link, Text } from "../../components/Typography";
 import Lists from "../../components/Lists";
 import Image from "../../components/Image";
+import CodeSurfer from "../../components/CodeSurfer";
 import SlidingBullets from "../../animations/SlidingBullets";
 
 import { ReactComponent as DitoLogo } from "../../images/dito-logo.svg";
@@ -13,13 +14,52 @@ import { ReactComponent as LinkedinLogo } from "../../images/linkedin-logo.svg";
 
 import { ReactComponent as GithubLogo } from "../../images/github-logo.svg";
 import { ReactComponent as SelfUrl } from "../../images/self-url.svg";
+
 import cssInJsSrc from "../../images/css-in-js.png";
-import CodeSurfer from "../../components/CodeSurfer";
+import { ReactComponent as StyledSystemLogo } from "../../images/styled-system-logo.svg";
+import { ReactComponent as VanillaExtractLogo } from "../../images/vanilla-extract-logo.svg";
+import { ReactComponent as WindiLogo } from "../../images/windi-logo.svg";
+import { ReactComponent as StitchesLogo } from "../../images/stitches-logo.svg";
+
+const StyledAppearWrapper = styled.div`
+  position: absolute;
+  width: 37.5rem;
+  height: 18.75rem;
+  margin-top: 2rem;
+
+  svg {
+    width: 4rem;
+    height: 4rem;
+    position: absolute;
+
+    &:nth-child(1) {
+      top: 4rem;
+      left: 12rem;
+    }
+
+    &:nth-child(2) {
+      top: 2rem;
+      right: 10rem;
+    }
+
+    &:nth-child(3) {
+      bottom: 4rem;
+      left: 8rem;
+    }
+
+    &:nth-child(4) {
+      bottom: 3rem;
+      right: 6rem;
+    }
+  }
+`;
 
 const slide_1: SlideProps = {
   backgroundUrl: cssInJsSrc,
   padding: "0",
-  children: () => (
+  notes:
+    "Só no mundo de CSS in JS temos tantas opções que as vezes é difícil entender qual escolher e porque alguma é mais popular que a outra. \n\n E eu tinha esse slide em 2019, de lá pra cá só aumentaram as opções.",
+  children: (index) => (
     <Flex
       flex="1"
       flow="column"
@@ -39,6 +79,14 @@ const slide_1: SlideProps = {
         style={{ width: "37.5rem", height: "18.75rem" }}
         alt="many css in js library logos layed out as a meme"
       />
+      <StyledAppearWrapper>
+        <SlidingBullets index={index} component={Lists.Unordered}>
+          <StyledSystemLogo />
+          <VanillaExtractLogo width="8rem" height="8rem" />
+          <StitchesLogo />
+          <WindiLogo />
+        </SlidingBullets>
+      </StyledAppearWrapper>
     </Flex>
   ),
 };
@@ -70,7 +118,7 @@ const variants = {
 const Button = styled.button.attrs(({ variant }) => ({
   className: base + variants[variant]
 }))\`
-  // think of something to put here
+  width: \${(props) => props.width};
 \`;`,
     lang: "jsx",
   },
