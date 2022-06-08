@@ -14,6 +14,7 @@ import { ReactComponent as LinkedinLogo } from "../../images/linkedin-logo.svg";
 import { ReactComponent as GithubLogo } from "../../images/github-logo.svg";
 import { ReactComponent as SelfUrl } from "../../images/self-url.svg";
 import cssInJsSrc from "../../images/css-in-js.png";
+import CodeSurfer from "../../components/CodeSurfer";
 
 const slide_1: SlideProps = {
   backgroundUrl: cssInJsSrc,
@@ -42,9 +43,57 @@ const slide_1: SlideProps = {
   ),
 };
 
-const slide_2: SlideProps = {};
+const slide_2: SlideProps = {
+  justify: "center",
+  notes:
+    "Tudo é preferência pessoal, e o que fará o time em questão trabalhar melhor.",
+  children: () => (
+    <>
+      <H1 weight="regular">Mas nenhuma é</H1>
+      <H1 weight="bold" suffix=".">
+        melhor que a outra
+      </H1>
+    </>
+  ),
+};
 
-const slide_3: SlideProps = {};
+const slide_3_steps = [
+  {
+    code: `const base = "font-sans text-base rounded-full px-2 py-1 "
+
+const variants = {
+  primary: 'bg-blue-500 text-white cursor-pointer',
+  outline: 'bg-white text-gray-500 border border-gray-500 cursor-pointer',
+  disabled: 'bg-gray-500 text-black cursor-not-allowed'
+};
+
+const Button = styled.button.attrs(({ variant }) => ({
+  className: base + variants[variant]
+}))\`
+  // think of something to put here
+\`;`,
+    lang: "jsx",
+  },
+];
+
+const slide_3: SlideProps = {
+  palette: "navy",
+  notes:
+    "Podemos até aproveitar de vários dos avanços da comunidade de CSS em conjunto. \n\n Um exemplo mais básico seria como aproveitar do benefício de performance do CSS atômico/funcional, mas da personalização dinâmica do CSS in JS.",
+  children: (index, backgroundColor) => (
+    <>
+      <Text margin="0 0 1rem 0" suffix=":">
+        Préprocessador <i>+</i> CSS Atômico <i>+</i> CSS in JS
+      </Text>
+      <CodeSurfer
+        index={index}
+        steps={slide_3_steps}
+        fontSize="1rem"
+        backgroundColor={backgroundColor}
+      />
+    </>
+  ),
+};
 
 const slide_4: SlideProps = {
   palette: "white",
@@ -135,7 +184,7 @@ const slide_5: SlideProps = {
           <UnorderedLinkList>
             <LinkItem href="https://smacss.com/">SMACSS</LinkItem>
             <LinkItem href="https://keycdn.com/blog/oocss">OOCSS</LinkItem>
-            <LinkItem href="http://getbem.com/.com">BEM</LinkItem>
+            <LinkItem href="http://getbem.com/">BEM</LinkItem>
           </UnorderedLinkList>
           <Text weight="semibold" size="small" suffix=":">
             Pós-processadores
