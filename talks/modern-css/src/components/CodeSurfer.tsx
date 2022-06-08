@@ -92,6 +92,13 @@ function overrideTheme(theme: any, backgroundColor: string = "#223154") {
     theme.styles.CodeSurfer.pre.background =
     theme.styles.CodeSurfer.title.background =
       backgroundColor;
+
+  theme.styles.CodeSurfer.tokens.selector = { color: "#50fa7b" };
+  theme.styles.CodeSurfer.tokens.class = { color: "#50fa7b" };
+  theme.styles.CodeSurfer.tokens.property = { color: "#8be9fd" };
+  theme.styles.CodeSurfer.tokens.color = { color: "#bd93f9" };
+  theme.styles.CodeSurfer.tokens.unit = { color: "#ff79c6" };
+  theme.styles.CodeSurfer.tokens.string = { color: "#f1fa8c" };
 }
 
 export default CodeSurfer;
