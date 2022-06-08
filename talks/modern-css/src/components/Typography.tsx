@@ -2,6 +2,7 @@ import styled, { css } from "styled-components";
 import { COLORS } from "@ditointernet/uai-foundation";
 
 import { margin, MarginProps } from "../utils/styling";
+import { transparentize } from "../utils/functional";
 
 export type TypographyProps = {
   size?: "large" | "normal" | "small";
@@ -34,6 +35,8 @@ function getTextProps(props: TypographyProps & { as?: "h1" | "h2" | "h3" }) {
       font-weight: 700;
       font-style: normal;
       color: ${COLORS.GREEN_MAIN};
+      text-shadow: calc(${size} * 0.0625) calc(${size} * 0.0625) 0
+        ${transparentize(COLORS.GREEN_MAIN, 0.5)};
     }
 
     &:after {
