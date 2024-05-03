@@ -5,7 +5,7 @@ import Hr from "../../components/Hr";
 import Avatar from "../../components/Avatar";
 import Image from "../../components/Image";
 
-import mePhotoSrc from "../../images/me.png";
+import mePhotoSrc from "../../images/me.jpg";
 import peterCssSrc from "../../images/peterCss.gif";
 import olderBrowserCssSrc from "../../images/olderBrowserCss.png";
 import ie5ForMacSrc from "../../images/ie5-for-mac.png";
