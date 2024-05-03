@@ -9,7 +9,6 @@ import Image from "../../components/Image";
 import CodeSurfer from "../../components/CodeSurfer";
 import SlidingBullets from "../../animations/SlidingBullets";
 
-import { ReactComponent as DitoLogo } from "../../images/dito-logo.svg";
 import { ReactComponent as LinkedinLogo } from "../../images/linkedin-logo.svg";
 
 import { ReactComponent as GithubLogo } from "../../images/github-logo.svg";
@@ -295,7 +294,6 @@ const SpecialExternalLinks = styled(Link)`
 const slide_6: SlideProps = {
   children: () => (
     <>
-      <DitoLogo />
       <Flex flex="1" flow="column" justify="center">
         <H1 weight="bold" suffix="!" margin="0 0 0.5rem 0">
           Obrigado
